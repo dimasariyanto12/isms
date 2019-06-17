@@ -1,0 +1,169 @@
+<div class="modal-content ">
+<div class="modal-header modal-header-primary">
+<h5 class="modal-title" id="EditPostLabel"><i class="fa fa-check-square-o" aria-hidden="true"></i> Bayar</h5>
+</div>
+<div class="modal-body">
+<div class="row">
+<div class="col-md-5">
+
+<table class="table">
+<tbody><tr>
+<td colspan="2">
+<div class="input-group" style="width:100%;margin-top:5px">
+<span class="input-group-btn"><button class="btn " type="button">Kasir &nbsp;&nbsp;&nbsp;&nbsp;</button></span>
+<input title="user" class="form-control" type="text" id="userLogin" value="admin" readonly="">
+<input title="userID" class="form-control" type="text" id="user_id" value="1" style="display:none">
+</div>
+<div class="input-group" style="width:100%;margin-top:5px">
+<span class="input-group-btn"><button class="btn " type="button">Tanggal  </button></span>
+<input title="tanggal transaksi" class="form-control datepicker-here" type="text" id="date" data-language="en" value="24/09/2018">
+<span class="input-group-btn"><span class="btn btn-default " type="button" readonly=""><i class="fa  fa-calendar"></i> </span></span>
+</div>
+<div id="loadFaktur">
+
+
+
+
+
+<div class="input-group" style="margin-top:5px;width:100%">
+<span class="input-group-btn"><button class="btn " type="button">Faktur  &nbsp;&nbsp;</button></span>
+<input class="form-control" type="text" id="faktur" value="PJ.180924145155.0469">
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="input-group" style="width:100%;margin-top:5px">
+<span class="input-group-btn"><button class="btn " type="button">Pelanggan  </button></span>
+<input style="display:none" class="form-control" type="text" name="idPelanggan" id="idPelanggan">
+<input class="form-control" type="text" name="namaPelanggan" id="namaPelanggan" readonly="">
+<span class="input-group-btn">
+<button class="btn btn-default" type="button" id="showPelanggan"><i class="fa fa-search"></i> Cari</button></span>
+</div>
+</td></tr>
+<tr><td style="width:100px">Metode Pembayaran</td><td>
+<form id="formKasir">
+<div class="radio">
+<label>
+<input type="radio" name="metode" id="metode1" value="tunai" checked="">
+Tunai
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="metode" id="metode2" value="kredit">
+Non Tunai / Kredit
+</label>
+</div>
+</form>
+<div class="input-group" id="showTempo" style="display: none;">
+<span class="input-group-btn"><button class="btn " type="button">Jatuh Tempo  </button></span>
+<input title="tanggal transaksi" class="form-control datepicker-here" type="text" id="tempo" data-language="en" value="">
+</div>
+</td></tr>
+
+<tr><td colspan="2" style="background:#eee"><b>Pengiriman</b></td></tr>
+<tr><td>Ekspedisi</td><td>
+<select class="form-control select2" id="ekspedisi" style="width: 100%;">
+<option value="">--pilih--</option>
+<option>JNE</option><option>JNT</option><option>TIKI</option><option>POS</option></select>
+</td></tr>
+<tr><td>Ongkir</td><td><input class="form-control" style="text-align:right" type="text" name="ongkir" id="ongkir" value="" onkeyup="formatValue(this)"></td></tr>
+</tbody></table>
+</div>
+<div class="col-md-7">
+
+<table class="table">
+<tbody><tr><td style="width:150px">Total</td><td>
+<div class="input-group">
+<span class="input-group-btn">
+<button class="btn btn-default" type="button" id="">Rp.</button></span><input disabled="" class="form-control" type="text" name="modalGrandKasir" id="modalGrandKasir">
+</div>
+<input class="form-control" style="display:none" type="text" name="num2" id="num1">
+</td></tr>
+<tr><td>Voucher</td><td>
+<div class="input-group">
+<span class="input-group-btn">
+<button class="btn btn-default" type="button" id="">Rp.</button></span>
+<input class="form-control" type="text" name="voucher" id="voucher" onkeyup="formatValue(this)">
+</div>
+</td></tr>
+<tr><td>Diskon</td><td>
+<div class="input-group" style="width:100px">
+<input class="form-control" style="text-align:right" type="text" name="diskon" id="diskon" value="" placeholder="0" onkeyup="formatValue(this)">
+<span class="input-group-btn">
+<button class="btn btn-default" type="button">%</button></span>
+</div>
+</td></tr>
+<tr><td>Pajak</td><td>
+<div class="input-group" style="width:100px">
+<input class="form-control" style="text-align:right" type="text" name="pajak" id="pajak" value="" placeholder="0" onkeyup="formatValue(this)">
+<span class="input-group-btn">
+<button class="btn btn-default" type="button">%</button></span>
+</div>
+</td></tr>
+<style>
+.grandTotal{background:#f7f0b7;font-size:24px}
+</style>
+<tr class="grandTotal"><td class="grandTotal">Grand Total</td><td class="grandTotal"><div id="hitungTotal">
+
+
+
+
+
+<b>Rp.40,000 </b>
+
+
+
+
+
+
+
+
+
+</div></td></tr>
+
+<tr><td>Dibayar</td><td>
+<div class="input-group">
+<span class="input-group-btn">
+<button class="btn btn-default" type="button" id="">Rp.</button></span>
+<input class="form-control" type="text" name="num2" id="num2" onkeyup="formatValue(this)">
+</div>
+</td></tr>
+<tr style="display:none"><td>Kembali</td><td><input class="form-control" type="text" name="subt" id="subt" readonly=""></td></tr>
+<tr style="background:#eee"><td>Kembali</td><td><div id="subt2">
+
+
+
+
+
+<b><br><input id="bayarKurang" style="display:none" value="1"><span style="color:red"> PEMBAYARAN BELUM CUKUP!</span></b>
+
+
+
+
+
+
+
+
+
+</div></td></tr>
+
+
+</tbody></table>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+<a class="btn btn-primary" href="#" id="inputBayar"><i class="fa fa-check-square-o" aria-hidden="true"></i> Simpan &amp; Cetak</a>
+<button class="btn btn-danger" type="button" data-dismiss="modal"><i class="fa fa-window-close" aria-hidden="true"></i> Batal</button>
+</div>
+</div>
